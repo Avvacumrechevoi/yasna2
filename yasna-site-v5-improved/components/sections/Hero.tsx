@@ -35,7 +35,7 @@ export default function Hero() {
 
         <p className="text-[15.5px] text-[#4B5563] leading-relaxed mb-5">
           8 направлений для тех, кто хочет понимать русскую культуру глубже.<br className="hidden sm:block" />
-          Не лекции — совместный поиск и проверка первоисточников.
+          Присоединяйтесь к сообществу Русская Ясна.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-5">

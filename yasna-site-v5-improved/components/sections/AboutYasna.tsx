@@ -5,61 +5,91 @@ import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 const examples = [
   {
     word: "Утро",
-    connection: "Утроба",
-    insight: "Утро — рождение нового дня. Мы исследуем связь с «утробой» — местом, откуда появляется жизнь. Случайность или закономерность?",
-  },
-  {
-    word: "Гранит",
-    connection: "Грань · Зерно · Знание",
-    insight: "«Грызть гранит науки» — привычная фраза. Но почему гранит? Мы ищем связь: грань, зерно, знание — и находим неожиданные пересечения.",
+    arrow: "Утроба",
+    text: "Утро — рождение дня. Утроба — место, откуда появляется жизнь. Совпадение? Мы проверяем.",
   },
   {
     word: "Восток",
-    connection: "Восторг",
-    insight: "Восток — откуда восходит солнце. Восторг — подъём чувств. Один корень для физического и эмоционального подъёма. Что ещё скрывает язык?",
+    arrow: "Восторг",
+    text: "Восток — восход солнца. Восторг — подъём чувств. Один корень — для подъёма физического и эмоционального.",
+  },
+  {
+    word: "Кремль",
+    arrow: "Созвездия",
+    text: "Расположение башен Кремля повторяет карту неба. Случайность или замысел? Разбираем вместе.",
+  },
+];
+
+const whatWeDo = [
+  {
+    icon: "🔤",
+    text: "Разбираем слова — откуда они, что значили раньше и как это меняет понимание",
+  },
+  {
+    icon: "🏛️",
+    text: "Гуляем по Москве и Петербургу — читаем то, что зашифровано в зданиях и улицах",
+  },
+  {
+    icon: "📖",
+    text: "Перечитываем классику — Пушкин, Гоголь уже не те, когда видишь второй слой",
+  },
+  {
+    icon: "🎄",
+    text: "Празднуем осмысленно — Масленица, Купала, Коляда с пониманием настоящего смысла",
   },
 ];
 
 export default function AboutYasna() {
   return (
-    <section id="about" className="relative z-10 px-6 py-12">
+    <section id="about" className="relative z-10 px-6 py-14">
       <div className="max-w-3xl mx-auto">
+        {/* Hook */}
         <AnimateOnScroll>
-          <div className="text-center mb-8">
+          <div className="text-center mb-10">
             <div className="text-[11px] text-gold-dark font-semibold tracking-[0.2em] uppercase mb-1">
-              О чём это
+              О проекте
             </div>
-            <h2 className="font-serif text-[28px] md:text-[34px] font-bold text-[#141C28] mb-3">
-              Что такое Русская Ясна
+            <h2 className="font-serif text-[28px] md:text-[34px] font-bold text-[#141C28] mb-4">
+              В привычных вещах скрыты
+              <br />
+              <span className="text-gold">неочевидные смыслы</span>
             </h2>
-            <p className="text-[15px] text-[#4B5563] leading-relaxed max-w-xl mx-auto">
-              Ясна — способ описания природы, открытый древними славянами. 
-              Любое явление можно «разложить по полочкам» — построить его Ясну. 
-              Ясная Звезда имеет 12 лучей — 12 граней, через которые явление становится ясным.
+            <p className="text-[15.5px] text-[#4B5563] leading-relaxed max-w-lg mx-auto">
+              Русский язык, архитектура городов, народные праздники — в них
+              зашифрованы связи, которые мы перестали замечать. Мы их
+              исследуем — вместе.
             </p>
           </div>
         </AnimateOnScroll>
 
-        {/* Concrete examples */}
+        {/* Word examples — the hook that makes it tangible */}
         <AnimateOnScroll delay={100}>
-          <div className="mb-8">
-            <p className="text-center text-[12px] text-[#9CA3AF] font-semibold tracking-wider uppercase mb-4">
-              Исследуем связи, которые подсказывает язык
+          <div className="mb-10">
+            <p className="text-center text-[13px] text-[#6B7280] font-medium mb-5">
+              Вот как это работает — на примере слов:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {examples.map((ex, i) => (
                 <div
                   key={i}
-                  className="p-5 rounded-[20px] bg-white/70 border border-gold/[0.06] backdrop-blur-sm"
+                  className="p-5 rounded-2xl transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+                  style={{
+                    background: "rgba(255,255,255,0.75)",
+                    border: "1px solid rgba(155,123,79,0.08)",
+                    backdropFilter: "blur(8px)",
+                  }}
                 >
-                  <div className="font-serif text-[28px] font-bold text-gold/70 mb-1">
-                    {ex.word}
+                  <div className="flex items-baseline gap-2 mb-3">
+                    <span className="font-serif text-[26px] font-bold text-[#141C28]">
+                      {ex.word}
+                    </span>
+                    <span className="text-gold text-[16px]">→</span>
+                    <span className="font-serif text-[20px] font-bold text-gold">
+                      {ex.arrow}
+                    </span>
                   </div>
-                  <div className="text-[11px] text-gold-dark font-semibold tracking-wide mb-3">
-                    → {ex.connection}
-                  </div>
-                  <p className="text-[13px] text-[#4B5563] leading-relaxed">
-                    {ex.insight}
+                  <p className="text-[13.5px] text-[#4B5563] leading-relaxed">
+                    {ex.text}
                   </p>
                 </div>
               ))}
@@ -67,88 +97,46 @@ export default function AboutYasna() {
           </div>
         </AnimateOnScroll>
 
-        {/* Structure: 3 crosses */}
+        {/* What we actually do */}
         <AnimateOnScroll delay={200}>
-          <div className="p-6 md:p-8 rounded-[24px] bg-white/50 border border-gold/[0.05]">
-            <div className="flex flex-col md:flex-row gap-6 items-center">
-              {/* SVG diagram */}
-              <div className="w-[180px] h-[180px] flex-shrink-0">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <circle cx="100" cy="100" r="85" fill="none" stroke="#C8A882" strokeWidth="0.7" opacity="0.2" />
-                  {/* 12 rays */}
-                  {Array.from({ length: 12 }).map((_, i) => {
-                    const angle = (i * 30 - 90) * (Math.PI / 180);
-                    const x2 = 100 + 75 * Math.cos(angle);
-                    const y2 = 100 + 75 * Math.sin(angle);
-                    const crossIdx = i % 3;
-                    const colors = ["#9B7B4F", "#1B8A7A", "#2B4570"];
-                    return (
-                      <line
-                        key={i}
-                        x1="100" y1="100" x2={x2} y2={y2}
-                        stroke={colors[crossIdx]}
-                        strokeWidth={1.2}
-                        opacity={0.35}
-                      />
-                    );
-                  })}
-                  {/* 12 dots at ray ends */}
-                  {Array.from({ length: 12 }).map((_, i) => {
-                    const angle = (i * 30 - 90) * (Math.PI / 180);
-                    const cx = 100 + 75 * Math.cos(angle);
-                    const cy = 100 + 75 * Math.sin(angle);
-                    const crossIdx = i % 3;
-                    const colors = ["#9B7B4F", "#1B8A7A", "#2B4570"];
-                    return (
-                      <circle key={i} cx={cx} cy={cy} r="5" fill={colors[crossIdx]} opacity={0.5} />
-                    );
-                  })}
-                  {/* Number labels */}
-                  {Array.from({ length: 12 }).map((_, i) => {
-                    const angle = (i * 30 - 90) * (Math.PI / 180);
-                    const tx = 100 + 62 * Math.cos(angle);
-                    const ty = 100 + 62 * Math.sin(angle);
-                    return (
-                      <text key={i} x={tx} y={ty} textAnchor="middle" dominantBaseline="central"
-                        fontSize="8" fill="#6B7280" fontFamily="Inter,sans-serif" opacity={0.5}>
-                        {i}
-                      </text>
-                    );
-                  })}
-                  <text x="100" y="97" textAnchor="middle" fontFamily="Georgia,serif" fontSize="16" fontWeight="700" fill="#9B7B4F" opacity="0.6">Ясна</text>
-                  <text x="100" y="112" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="7" fill="#9CA3AF" letterSpacing="1.5">12 ЛУЧЕЙ</text>
-                </svg>
-              </div>
+          <div
+            className="p-6 md:p-8 rounded-[24px]"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(26,35,50,0.97), rgba(43,69,112,0.97))",
+            }}
+          >
+            <h3 className="font-serif text-[22px] md:text-[24px] font-bold text-white mb-2">
+              Чем мы занимаемся
+            </h3>
+            <p className="text-[14px] text-white/50 mb-6">
+              900+ участников, 8 направлений, 10 лет работы
+            </p>
 
-              {/* Description */}
-              <div className="flex-1 space-y-3">
-                <p className="text-[14px] text-[#374151] leading-relaxed">
-                  В основе Ясны — структура из 12 элементов, объединённых в три креста. 
-                  Эту структуру можно увидеть в устройстве суток, в русском языке, 
-                  в архитектуре городов, в календарных праздниках.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { name: "Надежда", color: "#9B7B4F", nums: "0·3·6·9" },
-                    { name: "Любовь", color: "#1B8A7A", nums: "1·4·7·10" },
-                    { name: "Вера", color: "#2B4570", nums: "2·5·8·11" },
-                  ].map((c) => (
-                    <span
-                      key={c.name}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-medium"
-                      style={{ background: `${c.color}08`, color: c.color, border: `1px solid ${c.color}15` }}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full" style={{ background: c.color }} />
-                      {c.name} ({c.nums})
-                    </span>
-                  ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {whatWeDo.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex gap-3 p-4 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <span className="text-[20px] flex-shrink-0 mt-0.5">
+                    {item.icon}
+                  </span>
+                  <p className="text-[13.5px] text-white/80 leading-relaxed">
+                    {item.text}
+                  </p>
                 </div>
-                <p className="text-[12px] text-[#9CA3AF]">
-                  Три креста вместе — «Звезда Ясна» или «София» — отражают единство 
-                  Веры, Надежды и Любви.
-                </p>
-              </div>
+              ))}
             </div>
+
+            <p className="text-[13px] text-white/35 mt-5 text-center">
+              Это не лекции. Мы не слушаем — мы вместе ищем, проверяем
+              первоисточники и делимся находками.
+            </p>
           </div>
         </AnimateOnScroll>
       </div>
