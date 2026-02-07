@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://russkaya-yasna.ru/sitemap.xml

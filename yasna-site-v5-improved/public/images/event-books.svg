@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<defs><linearGradient id="warm2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F5EDE0"/><stop offset="100%" stop-color="#EDE4D3"/></linearGradient></defs>
+<rect width="600" height="400" fill="url(#warm2)"/>
+<!-- Table -->
+<ellipse cx="300" cy="280" rx="200" ry="30" fill="#C8A882" opacity="0.12"/>
+<!-- Books on table -->
+<g opacity="0.5">
+<rect x="220" y="248" width="30" height="40" rx="2" fill="#A82040" opacity="0.4" transform="rotate(-8 235 268)"/>
+<rect x="240" y="245" width="28" height="42" rx="2" fill="#2B4570" opacity="0.4" transform="rotate(5 254 266)"/>
+<rect x="265" y="250" width="25" height="38" rx="2" fill="#1B8A7A" opacity="0.4"/>
+<rect x="300" y="247" width="30" height="41" rx="2" fill="#9A7518" opacity="0.4" transform="rotate(-3 315 267)"/>
+<rect x="335" y="249" width="26" height="39" rx="2" fill="#3B5EC9" opacity="0.4" transform="rotate(7 348 268)"/>
+</g>
+<!-- People around table - 6 silhouettes in circle -->
+<g opacity="0.55">
+<circle cx="200" cy="200" r="9" fill="#4B5563"/><path d="M200 212 C200 228 194 238 194 248 M206 248 C206 238 200 228 200 212" stroke="#4B5563" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="260" cy="175" r="9" fill="#6B7280"/><path d="M260 187 C260 203 254 213 254 223 M266 223 C266 213 260 203 260 187" stroke="#6B7280" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="340" cy="175" r="9" fill="#374151"/><path d="M340 187 C340 203 334 213 334 223 M346 223 C346 213 340 203 340 187" stroke="#374151" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="200" r="9" fill="#555F6D"/><path d="M400 212 C400 228 394 238 394 248 M406 248 C406 238 400 228 400 212" stroke="#555F6D" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="370" cy="235" r="8" fill="#4B5563"/><path d="M370 246 C370 258 365 265 365 272 M375 272 C375 265 370 258 370 246" stroke="#4B5563" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<circle cx="230" cy="235" r="8" fill="#6B7280"/><path d="M230 246 C230 258 225 265 225 272 M235 272 C235 265 230 258 230 246" stroke="#6B7280" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+</g>
+<!-- Warm lamp glow -->
+<circle cx="300" cy="120" r="60" fill="#C8A882" opacity="0.08"/>
+<circle cx="300" cy="120" r="30" fill="#D4B896" opacity="0.1"/>
+<text x="300" y="385" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#9B7B4F" opacity="0.35">Читательский клуб · ЛитПроСвет</text>
+</svg>
