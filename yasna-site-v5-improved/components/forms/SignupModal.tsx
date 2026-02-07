@@ -17,11 +17,24 @@ type FormState = "idle" | "loading" | "success" | "error";
  * 5. Вставьте значения ниже:
  */
 
-const EMAILJS_SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  || "service_5sx1kgr";
-const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_1nal44g";
-const EMAILJS_PUBLIC_KEY   = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  || "VkrlQTQD67c7TfM2T";
+const EMAILJS_SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  || "";
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+const EMAILJS_PUBLIC_KEY   = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  || "";
 
 async function sendEmail(data: Record<string, string>): Promise<boolean> {
+  if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+    // Fallback: send to server API if EmailJS is not configured
+    try {
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
   try {
     const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
       method: "POST",
@@ -353,7 +366,15 @@ export default function SignupModal() {
             </button>
 
             <p className="text-center text-[11px] text-[#9CA3AF] mt-3">
-              Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+              Нажимая кнопку, вы соглашаетесь с{" "}
+              <a
+                href="https://t.me/russkaya_yasna"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gold transition-colors"
+              >
+                политикой конфиденциальности
+              </a>
             </p>
           </form>
         )}

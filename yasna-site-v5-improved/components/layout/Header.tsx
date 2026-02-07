@@ -33,12 +33,12 @@ export default function Header() {
             <div className="font-serif text-[21px] font-bold text-gold-dark">Русская Ясна</div>
             <div className="text-[9px] text-gold/40 tracking-wider uppercase">исследования русской культуры</div>
           </a>
-          <div className="hidden md:flex items-center gap-5">
+          <nav className="hidden md:flex items-center gap-5" aria-label="Основная навигация">
             {navItems.map(([href, label]) => (
               <a key={label} href={href} className="text-[13px] text-[#4B5563] font-medium hover:text-gold transition-colors">{label}</a>
             ))}
             <a href="#join" className="px-5 py-2 rounded-full text-[13px] font-semibold text-white bg-gradient-to-br from-gold to-gold-dark shadow-sm shadow-gold/20 hover:shadow-gold/30 transition-shadow">Вступить</a>
-          </div>
+          </nav>
           <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gold/[0.06] transition-colors" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}>
             <div className="w-5 h-4 relative flex flex-col justify-between">
               <span className="block h-[2px] w-full bg-[#4B5563] rounded transition-all duration-300 origin-center" style={{ transform: menuOpen ? "translateY(7px) rotate(45deg)" : "none" }} />

@@ -14,7 +14,7 @@ const questions: Question[] = [
       { text: "Разгадывать скрытые смыслы в словах", tags: ["izvod", "litprosvet"] },
       { text: "Гулять по городу и видеть то, чего не замечал", tags: ["neglinka", "marshruty"] },
       { text: "Связь неба и земли — звёзды, архитектура", tags: ["astronevod", "neglinka"] },
-      { text: "Праздники и традиции для семьи", tags: ["prazdniki", "teremok-tain"] },
+      { text: "Праздники и традиции для семьи", tags: ["prazdniki", "teremok"] },
     ],
   },
   {
@@ -22,7 +22,7 @@ const questions: Question[] = [
     answers: [
       { text: "Живые встречи и прогулки", tags: ["neglinka", "marshruty", "prazdniki"] },
       { text: "Онлайн-исследования в удобное время", tags: ["astronevod", "izvod", "litprosvet"] },
-      { text: "Занятия вместе с детьми", tags: ["teremok-tain", "prazdniki"] },
+      { text: "Занятия вместе с детьми", tags: ["teremok", "prazdniki"] },
       { text: "Практика здоровья и тела", tags: ["dzhiva"] },
     ],
   },
@@ -32,7 +32,7 @@ const questions: Question[] = [
       { text: "Аналитик — люблю докопаться до сути", tags: ["izvod", "astronevod"] },
       { text: "Творец — хочу создавать и писать", tags: ["litprosvet"] },
       { text: "Практик — мне нужен конкретный результат", tags: ["dzhiva", "neglinka", "marshruty"] },
-      { text: "Хранитель — важно передать детям и семье", tags: ["prazdniki", "teremok-tain"] },
+      { text: "Хранитель — важно передать детям и семье", tags: ["prazdniki", "teremok"] },
     ],
   },
 ];
