@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { SignupModalProvider } from "@/components/forms/SignupModalContext";
 import { OrganizationJsonLd, FaqJsonLd } from "@/components/seo/JsonLd";
+import { assetUrl } from "@/lib/utils";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -43,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${inter.variable} ${cormorant.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href={assetUrl("/favicon.svg")} type="image/svg+xml" />
         <OrganizationJsonLd />
         <FaqJsonLd />
       </head>
