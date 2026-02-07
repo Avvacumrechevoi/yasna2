@@ -1,14 +1,15 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
+import { assetUrl } from "@/lib/utils";
 
 const photos = [
-  { src: "/images/event-walk.svg", alt: "Натурный урок" },
-  { src: "/images/event-books.svg", alt: "Читательский клуб" },
-  { src: "/images/event-online.svg", alt: "Онлайн-встреча" },
-  { src: "/images/event-holiday.svg", alt: "Праздник" },
-  { src: "/images/event-kids.svg", alt: "Занятие для детей" },
-  { src: "/images/event-research.svg", alt: "Исследование" },
+  { src: assetUrl("/images/event-walk.svg"), alt: "Натурный урок" },
+  { src: assetUrl("/images/event-books.svg"), alt: "Читательский клуб" },
+  { src: assetUrl("/images/event-online.svg"), alt: "Онлайн-встреча" },
+  { src: assetUrl("/images/event-holiday.svg"), alt: "Праздник" },
+  { src: assetUrl("/images/event-kids.svg"), alt: "Занятие для детей" },
+  { src: assetUrl("/images/event-research.svg"), alt: "Исследование" },
 ];
 
 const stats = [

@@ -1,7 +1,24 @@
 import type { Metadata } from "next";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { SignupModalProvider } from "@/components/forms/SignupModalContext";
 import { OrganizationJsonLd, FaqJsonLd } from "@/components/seo/JsonLd";
+import { assetUrl } from "@/lib/utils";
+
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Русская Ясна — сообщество исследователей русской культуры",
@@ -25,13 +42,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru">
+    <html lang="ru" className={`${inter.variable} ${cormorant.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href={assetUrl("/favicon.svg")} type="image/svg+xml" />
         <OrganizationJsonLd />
         <FaqJsonLd />
       </head>
-      <body className="bg-bg text-text-primary antialiased">
+      <body className="bg-bg text-text-primary antialiased font-sans">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-gold focus:text-white focus:text-sm focus:font-semibold"

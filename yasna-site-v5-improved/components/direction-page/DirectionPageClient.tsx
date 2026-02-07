@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { directions } from "@/lib/data";
 import { useSignupModal } from "@/components/forms/SignupModalContext";
 import SignupModal from "@/components/forms/SignupModal";
 
-const TYPE_COLORS: Record<string, string> = { "Статья": "#3B5EC9", "Видео": "#A82040", "Гайд": "#18804A", "Отчёт": "#1B8A7A", "Конкурс": "#9A7518", "Расписание": "#555F6D", "Заметка": "#C25538", "Курс": "#B83838" };
-const TYPE_EMOJI: Record<string, string> = { "Статья": "📝", "Видео": "🎬", "Гайд": "📘", "Отчёт": "📋", "Конкурс": "🏆", "Курс": "🎓" };
-const IC_COLORS: Record<string, string> = { tg: "#229ED9", vk: "#4C75A3", dz: "#1D1D1D", yt: "#FF0000", site: "#8B6914" };
-const IC_EMOJI: Record<string, string> = { tg: "✈️", vk: "💬", dz: "📰", yt: "▶️", site: "🌐" };
+import {
+  CONTENT_TYPE_COLORS as TYPE_COLORS,
+  CONTENT_TYPE_EMOJI as TYPE_EMOJI,
+  LINK_ICON_COLORS as IC_COLORS,
+  LINK_ICON_EMOJI as IC_EMOJI,
+} from "@/lib/constants";
 
 function FaqBlock({ items, color }: { items: { q: string; a: string }[]; color: string }) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -49,7 +51,6 @@ function SectionHeader({ title, subtitle, color }: { title: string; subtitle?: s
 export default function DirectionPageClient({ slug }: { slug: string }) {
   const d = directions.find((dir) => dir.slug === slug);
   const [tab, setTab] = useState<"about" | "articles" | "resources">("about");
-  const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const { openModal } = useSignupModal();
 
   if (!d) return (

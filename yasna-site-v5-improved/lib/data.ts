@@ -557,6 +557,8 @@ export const faqItems = [
 ];
 
 /* ═══ UPCOMING EVENTS ═══ */
+const bp = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const upcomingEvents = [
   {
     title: "Натурный урок: ВДНХ — скрытые коды",
@@ -567,7 +569,7 @@ export const upcomingEvents = [
     location: "Москва, ВДНХ",
     tag: "Прогулка",
     spots: "Осталось 8 мест",
-    image: "/images/event-walk.svg",
+    image: `${bp}/images/event-walk.svg`,
   },
   {
     title: "Читательский клуб: Гоголь «Вий»",
@@ -578,7 +580,7 @@ export const upcomingEvents = [
     location: "Онлайн (Zoom)",
     tag: "Клуб",
     spots: null,
-    image: "/images/event-books.svg",
+    image: `${bp}/images/event-books.svg`,
   },
   {
     title: "Масленица: подготовка и смыслы",
@@ -589,7 +591,7 @@ export const upcomingEvents = [
     location: "Москва",
     tag: "Праздник",
     spots: null,
-    image: "/images/event-holiday.svg",
+    image: `${bp}/images/event-holiday.svg`,
   },
   {
     title: "Кремль и созвездия: онлайн-разбор",
@@ -600,7 +602,7 @@ export const upcomingEvents = [
     location: "Онлайн (Zoom)",
     tag: "Лекция",
     spots: null,
-    image: "/images/event-online.svg",
+    image: `${bp}/images/event-online.svg`,
   },
   {
     title: "Этимология слова «Масленица»",
@@ -611,7 +613,7 @@ export const upcomingEvents = [
     location: "Онлайн",
     tag: "Исследование",
     spots: null,
-    image: "/images/event-research.svg",
+    image: `${bp}/images/event-research.svg`,
   },
   {
     title: "Теремок тайн: занятие для детей 7-12 лет",
@@ -622,6 +624,6 @@ export const upcomingEvents = [
     location: "Москва",
     tag: "Дети",
     spots: "Осталось 5 мест",
-    image: "/images/event-kids.svg",
+    image: `${bp}/images/event-kids.svg`,
   },
 ];

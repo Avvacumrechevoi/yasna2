@@ -3,10 +3,10 @@
   <url><loc>https://russkaya-yasna.ru/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://russkaya-yasna.ru/neglinka</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://russkaya-yasna.ru/litprosvet</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://russkaya-yasna.ru/izvod</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://russkaya-yasna.ru/astronevod</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://russkaya-yasna.ru/russkiy-krest</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://russkaya-yasna.ru/prazdniki</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://russkaya-yasna.ru/teremok-tain</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://russkaya-yasna.ru/upravleniya-yasna</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://russkaya-yasna.ru/dzhiva</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://russkaya-yasna.ru/marshruty</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://russkaya-yasna.ru/izvod</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://russkaya-yasna.ru/teremok</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

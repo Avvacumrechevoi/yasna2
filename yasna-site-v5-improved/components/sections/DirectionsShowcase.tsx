@@ -3,10 +3,8 @@
 import { useState, useEffect } from "react";
 import { directions, type Direction } from "@/lib/data";
 import Link from "next/link";
-import Image from "next/image";
 
-const IC_COLORS: Record<string, string> = { tg: "#229ED9", vk: "#4C75A3", dz: "#1D1D1D", yt: "#FF0000", site: "#8B6914" };
-const IC_EMOJI: Record<string, string> = { tg: "✈️", vk: "💬", dz: "📰", yt: "▶️", site: "🌐" };
+import { LINK_ICON_COLORS as IC_COLORS, LINK_ICON_EMOJI as IC_EMOJI } from "@/lib/constants";
 
 export default function DirectionsShowcase() {
   const [selected, setSelected] = useState<string | null>(null);

@@ -353,7 +353,15 @@ export default function SignupModal() {
             </button>
 
             <p className="text-center text-[11px] text-[#9CA3AF] mt-3">
-              Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+              Нажимая кнопку, вы соглашаетесь с{" "}
+              <a
+                href="https://t.me/russkaya_yasna"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gold transition-colors"
+              >
+                политикой конфиденциальности
+              </a>
             </p>
           </form>
         )}
