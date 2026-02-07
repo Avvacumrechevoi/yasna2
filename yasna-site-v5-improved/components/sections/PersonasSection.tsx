@@ -7,38 +7,81 @@ export default function PersonasSection() {
   const { openModal } = useSignupModal();
 
   return (
-    <section id="personas" className="relative z-10 px-6 py-10">
+    <section id="personas" className="relative z-10 px-6 py-14">
       <div className="max-w-3xl mx-auto">
         <AnimateOnScroll>
-          <div className="text-center mb-6">
-            <div className="text-[11px] text-gold-dark font-semibold tracking-[0.2em] uppercase mb-1">Для кого</div>
-            <h2 className="font-serif text-[28px] font-bold text-[#141C28]">Вы здесь, если:</h2>
-            <p className="text-sm text-[#6B7280] mt-1">Найдите себя среди наших участников</p>
+          <div className="text-center mb-9">
+            <div className="text-[11px] text-gold-dark font-semibold tracking-[0.2em] uppercase mb-1">
+              Участники
+            </div>
+            <h2 className="font-serif text-[28px] md:text-[34px] font-bold text-[#141C28]">
+              Кому подойдёт Ясна
+            </h2>
           </div>
         </AnimateOnScroll>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {personas.map((p, i) => (
-            <AnimateOnScroll key={i} delay={i * 80}>
-              <div className="p-5 rounded-[20px] bg-white/60 border border-gold/[0.05] backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md h-full">
-                <div className="text-[28px] mb-2.5">{p.emoji}</div>
-                <div className="text-[14px] font-semibold text-[#141C28] mb-1.5 leading-snug">{p.headline}</div>
-                <div className="text-[12.5px] text-[#6B7280] leading-relaxed mb-2.5">{p.description}</div>
-                <div className="flex flex-wrap gap-1">
-                  {p.tags.map(t => (
-                    <span key={t} className="text-[10px] px-2 py-0.5 rounded-lg bg-gold/[0.06] text-gold-dark font-medium">{t}</span>
-                  ))}
+            <AnimateOnScroll key={i} delay={i * 70}>
+              <div
+                className="group relative flex gap-4 p-5 rounded-2xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 h-full overflow-hidden"
+                style={{
+                  background: "rgba(255,255,255,0.7)",
+                  border: "1px solid rgba(0,0,0,0.04)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                {/* Color accent bar */}
+                <div
+                  className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full transition-all duration-300 group-hover:top-2 group-hover:bottom-2"
+                  style={{ background: p.color }}
+                />
+
+                {/* Content */}
+                <div className="pl-2.5 flex-1 min-w-0">
+                  <h3
+                    className="text-[15px] font-bold mb-1.5 leading-snug"
+                    style={{ color: p.color }}
+                  >
+                    {p.headline}
+                  </h3>
+                  <p className="text-[13px] text-[#4B5563] leading-relaxed mb-3">
+                    {p.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[10.5px] px-2.5 py-1 rounded-lg font-medium"
+                        style={{
+                          background: `${p.color}08`,
+                          color: p.color,
+                          border: `1px solid ${p.color}12`,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </AnimateOnScroll>
           ))}
         </div>
-        <AnimateOnScroll delay={500}>
-          <div className="text-center mt-6">
+
+        <AnimateOnScroll delay={450}>
+          <div className="text-center mt-8">
             <button
               onClick={() => openModal("personas")}
-              className="text-[14px] text-gold-dark font-semibold hover:text-gold-dark transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-[14px] font-semibold transition-all hover:scale-105 active:scale-95"
+              style={{
+                color: "#7A5F3A",
+                background: "rgba(155,123,79,0.06)",
+                border: "1px solid rgba(155,123,79,0.12)",
+              }}
             >
-              Не нашли себя? Расскажем лично →
+              Не нашли себя? Расскажем лично
+              <span className="text-gold">→</span>
             </button>
           </div>
         </AnimateOnScroll>
