@@ -36,7 +36,7 @@ export default function EventsSection() {
               <div className="flex items-center gap-3.5 px-4 py-3 rounded-[18px] bg-white/70 border border-black/[0.03] transition-all hover:shadow-md group">
                 {/* Image thumbnail */}
                 {ev.image && (
-                  <div className="w-[56px] h-[42px] rounded-lg overflow-hidden flex-shrink-0 border border-black/[0.04]">
+                  <div className="hidden sm:block w-[56px] h-[42px] rounded-lg overflow-hidden flex-shrink-0 border border-black/[0.04]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={ev.image} alt="" className="w-full h-full object-cover" loading="lazy" />
                   </div>

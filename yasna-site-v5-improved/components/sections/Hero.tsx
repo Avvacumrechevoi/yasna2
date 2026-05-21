@@ -29,12 +29,12 @@ export default function Hero() {
 
         <h1 className="font-serif text-[clamp(26px,5vw,44px)] font-bold leading-[1.15] mb-3 text-[#141C28]">
           Откройте скрытые смыслы<br />
-          русских слов, городов<br className="hidden sm:block" />
+          русских слов, городов{" "}<br className="hidden sm:block" />
           <span className="text-gold italic">и праздников</span>
         </h1>
 
         <p className="text-[15.5px] text-[#4B5563] leading-relaxed mb-5">
-          8 направлений для тех, кто хочет понимать русскую культуру глубже.<br className="hidden sm:block" />
+          8 направлений для тех, кто хочет понимать русскую культуру глубже.{" "}<br className="hidden sm:block" />
           Присоединяйтесь к сообществу Русская Ясна.
         </p>
 
