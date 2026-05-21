@@ -17,6 +17,31 @@ body {
   font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   background: var(--bg);
   color: #1A2332;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Anchored sections clear the sticky header when navigated to */
+  [id] {
+    scroll-margin-top: 84px;
+  }
+}
+
+/* Serif display headings: lining figures keep numbers even */
+.font-serif {
+  font-feature-settings: "kern" 1, "liga" 1, "lnum" 1;
 }
 
 /* Animations */
