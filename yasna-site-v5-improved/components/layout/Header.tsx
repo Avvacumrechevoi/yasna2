@@ -20,7 +20,6 @@ export default function Header() {
   const navItems = [
     ["#about", "О проекте"],
     ["#directions", "Направления"],
-    ["#events", "Расписание"],
     ["#faq", "Вопросы"],
   ];
 

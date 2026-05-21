@@ -7,7 +7,6 @@ import AboutYasna from "@/components/sections/AboutYasna";
 import MethodSection from "@/components/sections/MethodSection";
 import DirectionsShowcase from "@/components/sections/DirectionsShowcase";
 import Testimonials from "@/components/sections/Testimonials";
-import EventsSection from "@/components/sections/EventsSection";
 import ThreeSteps from "@/components/sections/ThreeSteps";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -32,7 +31,6 @@ export default function Home() {
         <DirectionQuiz />
         <Testimonials />
         <ThreeSteps />
-        <EventsSection />
         <FAQ />
         <FinalCTA />
       </main>

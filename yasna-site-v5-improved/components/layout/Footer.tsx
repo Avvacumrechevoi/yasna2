@@ -62,7 +62,6 @@ export default function Footer() {
               {[
                 ["#about", "О проекте"],
                 ["#directions", "Направления"],
-                ["#events", "Расписание"],
                 ["#faq", "Частые вопросы"],
               ].map(([href, label]) => (
                 <a key={label} href={href} className="text-[13px] text-[#6B7280] hover:text-gold transition-colors no-underline">
