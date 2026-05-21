@@ -275,7 +275,7 @@ function DirectionPopup({
                 boxShadow: `0 4px 20px ${d.color}22`,
               }}
             >
-              Подробнее →
+              Узнать подробнее →
             </Link>
             <a
               href={d.telegramUrl}
@@ -284,7 +284,7 @@ function DirectionPopup({
               className="px-5 py-3.5 rounded-2xl text-[14px] font-semibold text-[#4B5563] border border-black/[0.06] hover:border-black/[0.12] transition-all no-underline flex items-center"
               style={{ background: "rgba(255,255,255,0.8)" }}
             >
-              Telegram
+              Открыть Telegram
             </a>
           </div>
         </div>

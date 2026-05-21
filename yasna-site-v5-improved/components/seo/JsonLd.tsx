@@ -8,7 +8,7 @@ export function OrganizationJsonLd() {
     url: "https://russkaya-yasna.ru",
     logo: "https://russkaya-yasna.ru/favicon.svg",
     description:
-      "Сообщество исследователей русской культуры. 8 направлений: история, литература, астрономия, праздники, язык, здоровье, маршруты, обучение детей.",
+      "Сообщество исследователей русской культуры. 8 направлений: история, литература, астрономия, праздники, здоровье, путешествия, язык, обучение детей.",
     sameAs: [
       "https://t.me/russkaya_yasna",
       "https://vk.com/russkaya_yasna",

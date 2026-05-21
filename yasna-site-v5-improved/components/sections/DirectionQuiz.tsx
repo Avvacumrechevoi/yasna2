@@ -144,7 +144,7 @@ export default function DirectionQuiz() {
               <div className="text-center mb-5">
                 <div className="text-[28px] mb-2">✨</div>
                 <h3 className="font-serif text-[22px] font-bold text-[#141C28] mb-1">
-                  Вам подойдёт
+                  Вам подойдут
                 </h3>
                 <p className="text-[13px] text-[#6B7280]">
                   На основе ваших ответов

@@ -110,7 +110,7 @@ export default function AboutYasna() {
               Чем мы занимаемся
             </h3>
             <p className="text-[14px] text-white/50 mb-6">
-              900+ участников, 8 направлений, 10 лет работы
+              900+ участников, 8 направлений, 10+ лет работы
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
