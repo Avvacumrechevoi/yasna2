@@ -31,11 +31,11 @@ export default function Header() {
         <div className="max-w-[960px] mx-auto px-5 md:px-6 py-3 flex items-center justify-between">
           <Link href="/" className="no-underline">
             <div className="font-serif text-[21px] font-bold text-gold-dark">Русская Ясна</div>
-            <div className="text-[9px] text-gold/40 tracking-wider uppercase">исследования русской культуры</div>
+            <div className="text-[10px] text-gold-dark/90 tracking-wider uppercase">исследования русской культуры</div>
           </Link>
           <nav className="hidden md:flex items-center gap-5" aria-label="Основная навигация">
             {navItems.map(([href, label]) => (
-              <a key={label} href={href} className="text-[13px] text-[#4B5563] font-medium hover:text-gold transition-colors">{label}</a>
+              <a key={label} href={href} className="text-[13px] text-[#374151] font-semibold hover:text-gold transition-colors">{label}</a>
             ))}
             <a href="#join" className="px-5 py-2 rounded-full text-[13px] font-semibold text-white bg-gradient-to-br from-gold to-gold-dark shadow-sm shadow-gold/20 hover:shadow-gold/30 transition-shadow">Вступить</a>
           </nav>
