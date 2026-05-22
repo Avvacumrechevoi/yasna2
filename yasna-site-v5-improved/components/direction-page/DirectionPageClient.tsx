@@ -6,6 +6,7 @@ import { directions } from "@/lib/data";
 import { useSignupModal } from "@/components/forms/SignupModalContext";
 import SignupModal from "@/components/forms/SignupModal";
 import type { ArticleMeta } from "@/lib/articles";
+import { assetUrl } from "@/lib/utils";
 
 import {
   CONTENT_TYPE_COLORS as TYPE_COLORS,
@@ -66,8 +67,8 @@ export default function DirectionPageClient({ slug, mdArticles = [] }: { slug: s
   const related = directions.filter((r) => d.relatedSlugs.includes(r.slug));
 
   const articleItems = [
-    ...mdArticles.map((a) => ({ title: a.title, type: a.type, date: a.date, duration: a.duration, href: `/articles/${a.slug}`, internal: true })),
-    ...d.articles.map((a) => ({ title: a.title, type: a.type, date: a.date, duration: a.duration, href: a.url || "", internal: false })),
+    ...mdArticles.map((a) => ({ title: a.title, type: a.type, date: a.date, duration: a.duration, href: `/articles/${a.slug}`, internal: true, emoji: a.emoji || "", cover: a.cover || "" })),
+    ...d.articles.map((a) => ({ title: a.title, type: a.type, date: a.date, duration: a.duration, href: a.url || "", internal: false, emoji: "", cover: "" })),
   ];
 
   return (
@@ -260,31 +261,37 @@ export default function DirectionPageClient({ slug, mdArticles = [] }: { slug: s
           <h2 className="text-[28px] font-bold font-serif text-[#141C28] mb-2">Материалы и публикации</h2>
           <p className="text-[14.5px] text-[#6B7280] mb-7">Статьи, видео и гайды направления</p>
           {articleItems.length > 0 ? (
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {articleItems.map((art, i) => {
                 const tc = TYPE_COLORS[art.type] || d.color;
-                const inner = (
+                const coverSrc = art.cover ? (art.cover.startsWith("http") ? art.cover : assetUrl(art.cover)) : "";
+                const card = (
                   <>
-                    <div className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center shrink-0 text-[20px]"
-                      style={{ background: `${tc}10`, border: `1px solid ${tc}20` }}>
-                      {TYPE_EMOJI[art.type] || "📄"}
+                    <div className="relative w-full aspect-[16/9] overflow-hidden flex items-center justify-center"
+                      style={{ background: coverSrc ? "#f3efe8" : `linear-gradient(135deg, ${d.color}26, ${d.color}0a)` }}>
+                      {coverSrc ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={coverSrc} alt={art.title} className="w-full h-full object-cover" loading="lazy" />
+                      ) : (
+                        <span className="text-[46px] leading-none">{art.emoji || TYPE_EMOJI[art.type] || "📄"}</span>
+                      )}
+                      <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-lg text-[11px] font-semibold"
+                        style={{ color: tc, background: "rgba(255,255,255,0.92)" }}>{art.type}</span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-semibold"
-                          style={{ color: tc, background: `${tc}10` }}>{art.type}</span>
-                        {art.duration && <span className="text-[12px] text-[#6B7280]">{art.duration}</span>}
+                    <div className="p-5">
+                      <h3 className="text-[16px] font-semibold text-[#1F2937] leading-snug mb-1.5">{art.title}</h3>
+                      <div className="flex items-center gap-2 text-[12.5px] text-[#6B7280]">
+                        {art.date && <span>{art.date}</span>}
+                        {art.date && art.duration && <span>·</span>}
+                        {art.duration && <span>{art.duration}</span>}
                       </div>
-                      <h3 className="text-[15.5px] font-semibold text-[#1F2937] leading-snug">{art.title}</h3>
-                      <p className="text-[12.5px] text-[#6B7280] mt-1">{art.date}</p>
                     </div>
-                    {art.href && <span className="text-[18px] self-center opacity-40" style={{ color: d.color }}>→</span>}
                   </>
                 );
-                const cls = "flex items-start gap-4 p-5 rounded-2xl bg-white border border-black/[0.04]" + (art.href ? " no-underline cursor-pointer transition-all hover:shadow-md hover:-translate-y-px" : "");
-                if (art.internal && art.href) return <Link key={i} href={art.href} className={cls}>{inner}</Link>;
-                if (art.href) return <a key={i} href={art.href} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>;
-                return <div key={i} className={cls}>{inner}</div>;
+                const cls = "block rounded-2xl overflow-hidden bg-white border border-black/[0.04]" + (art.href ? " no-underline transition-all hover:shadow-lg hover:-translate-y-0.5" : "");
+                if (art.internal && art.href) return <Link key={i} href={art.href} className={cls}>{card}</Link>;
+                if (art.href) return <a key={i} href={art.href} target="_blank" rel="noopener noreferrer" className={cls}>{card}</a>;
+                return <div key={i} className={cls}>{card}</div>;
               })}
             </div>
           ) : (

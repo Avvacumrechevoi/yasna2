@@ -13,6 +13,7 @@ export type ArticleMeta = {
   duration: string;
   direction: string;
   cover?: string;
+  emoji?: string;
 };
 
 export type Article = ArticleMeta & { html: string };
@@ -37,6 +38,7 @@ function parse(slug: string): Article | null {
     duration: data.duration || "",
     direction: data.direction || "",
     cover: data.cover || "",
+    emoji: data.emoji || "",
     html: marked.parse(content) as string,
   };
 }
@@ -61,5 +63,6 @@ export function getArticlesByDirection(direction: string): ArticleMeta[] {
       duration: a.duration,
       direction: a.direction,
       cover: a.cover,
+      emoji: a.emoji,
     }));
 }
