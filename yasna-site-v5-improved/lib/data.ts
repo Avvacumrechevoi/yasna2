@@ -9,6 +9,7 @@ export type DirectionArticle = {
   type: "Статья" | "Видео" | "Гайд" | "Отчёт" | "Конкурс" | "Расписание" | "Заметка" | "Курс";
   date: string;
   duration: string;
+  url?: string;
 };
 
 export type Direction = {
@@ -39,6 +40,7 @@ export type Direction = {
   faq: { q: string; a: string }[];
   relatedSlugs: string[];
   telegramUrl: string;
+  photos?: string[];
 };
 
 export const directions: Direction[] = [

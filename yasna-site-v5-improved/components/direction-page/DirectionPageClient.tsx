@@ -91,7 +91,7 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
           </svg>
         </div>
         <div className="max-w-[900px] mx-auto px-5 md:px-8 pt-8 pb-10 relative">
-          <nav className="flex items-center gap-2 text-[12.5px] text-[#9CA3AF] mb-7">
+          <nav className="flex items-center gap-2 text-[12.5px] text-[#6B7280] mb-7">
             <Link href="/" className="hover:text-[#6B5530] transition-colors">Главная</Link>
             <span className="text-[10px]">›</span>
             <span className="font-semibold" style={{ color: d.color }}>{d.name}</span>
@@ -109,24 +109,24 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
             </div>
           </div>
           <div className="flex flex-wrap gap-2.5">
-            {[d.category, d.format].map((t, i) => (
-              <span key={i} className="px-4 py-2 rounded-full text-[13px] font-medium bg-white/65 border border-black/[0.06] text-[#374151]">
-                {["◆", "📍"][i]} {t}
-              </span>
-            ))}
+            <span className="px-4 py-2 rounded-full text-[13px] font-medium bg-white/65 border border-black/[0.06] text-[#374151]">◆ {d.category}</span>
+            <span className="px-4 py-2 rounded-full text-[13px] font-medium bg-white/65 border border-black/[0.06] text-[#374151]">📍 {d.format}</span>
+            {d.participants && (
+              <span className="px-4 py-2 rounded-full text-[13px] font-medium bg-white/65 border border-black/[0.06] text-[#374151]">👥 {d.participants} участников</span>
+            )}
           </div>
         </div>
         <div className="h-[3px]" style={{ background: `linear-gradient(90deg,${d.color},${d.color}35,transparent)` }} />
       </section>
 
       {/* TABS */}
-      <div className="max-w-[900px] mx-auto px-5 md:px-8 pt-5 flex gap-2 flex-wrap">
+      <div role="tablist" aria-label="Разделы направления" className="max-w-[900px] mx-auto px-5 md:px-8 pt-5 flex gap-2 flex-wrap">
         {([
           { id: "about" as const, label: "О направлении", count: 0 },
           { id: "articles" as const, label: "Материалы", count: d.articles.length },
           { id: "resources" as const, label: "Ресурсы", count: d.links.length },
         ]).map((t) => (
-          <button key={t.id} onClick={() => setTab(t.id)}
+          <button key={t.id} onClick={() => setTab(t.id)} role="tab" aria-selected={tab === t.id}
             className="px-5 py-2.5 rounded-[14px] text-[14px] font-medium transition-all"
             style={{
               fontWeight: tab === t.id ? 700 : 500,
@@ -161,6 +161,16 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
             </div>
           </section>
 
+          {d.photos && d.photos.length > 0 && <section>
+            <SectionHeader title="Фотографии" subtitle="Со встреч" color={d.color} />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {d.photos.map((src, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={i} src={src} alt={`${d.name} — фото ${i + 1}`} className="w-full aspect-[4/3] object-cover rounded-2xl border border-black/[0.04]" loading="lazy" />
+              ))}
+            </div>
+          </section>}
+
           <section>
             <SectionHeader title="Для кого" subtitle="Аудитория" color={d.color} />
             <div className="space-y-3">
@@ -185,6 +195,19 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
               ))}
             </div>
           </section>
+
+          {d.team.length > 0 && <section>
+            <SectionHeader title="Кураторы" subtitle="Команда" color={d.color} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {d.team.map((m, i) => (
+                <div key={i} className="p-5 rounded-2xl bg-white/70 border border-black/[0.04]">
+                  <p className="text-[15px] font-semibold text-[#1F2937]">{m.name}</p>
+                  <p className="text-[13px] font-medium mb-2" style={{ color: d.color }}>{m.role}</p>
+                  <p className="text-[14px] text-[#4B5563] leading-[1.6]">{m.bio}</p>
+                </div>
+              ))}
+            </div>
+          </section>}
 
           {d.stories.length > 0 && <section>
             <SectionHeader title="Результаты" subtitle="Истории" color={d.color} />
@@ -234,8 +257,8 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
             <div className="space-y-3">
               {d.articles.map((art, i) => {
                 const tc = TYPE_COLORS[art.type] || d.color;
-                return (
-                  <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-black/[0.04] cursor-pointer transition-all hover:shadow-md hover:-translate-y-px">
+                const inner = (
+                  <>
                     <div className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center shrink-0 text-[20px]"
                       style={{ background: `${tc}10`, border: `1px solid ${tc}20` }}>
                       {TYPE_EMOJI[art.type] || "📄"}
@@ -244,12 +267,22 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
                       <div className="flex items-center gap-2 mb-1.5">
                         <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-semibold"
                           style={{ color: tc, background: `${tc}10` }}>{art.type}</span>
-                        {art.duration && <span className="text-[12px] text-[#9CA3AF]">{art.duration}</span>}
+                        {art.duration && <span className="text-[12px] text-[#6B7280]">{art.duration}</span>}
                       </div>
                       <h3 className="text-[15.5px] font-semibold text-[#1F2937] leading-snug">{art.title}</h3>
-                      <p className="text-[12.5px] text-[#9CA3AF] mt-1">{art.date}</p>
+                      <p className="text-[12.5px] text-[#6B7280] mt-1">{art.date}</p>
                     </div>
-                    <span className="text-[18px] self-center opacity-40" style={{ color: d.color }}>→</span>
+                    {art.url && <span className="text-[18px] self-center opacity-40" style={{ color: d.color }}>→</span>}
+                  </>
+                );
+                return art.url ? (
+                  <a key={i} href={art.url} target="_blank" rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-black/[0.04] no-underline cursor-pointer transition-all hover:shadow-md hover:-translate-y-px">
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-black/[0.04]">
+                    {inner}
                   </div>
                 );
               })}
