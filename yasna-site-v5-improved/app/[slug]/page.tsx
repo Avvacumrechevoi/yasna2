@@ -1,4 +1,5 @@
 import { directions } from "@/lib/data";
+import { getArticlesByDirection } from "@/lib/articles";
 import DirectionPageClient from "@/components/direction-page/DirectionPageClient";
 import type { Metadata } from "next";
 
@@ -23,5 +24,6 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default function DirectionPage({ params }: Props) {
-  return <DirectionPageClient slug={params.slug} />;
+  const mdArticles = getArticlesByDirection(params.slug);
+  return <DirectionPageClient slug={params.slug} mdArticles={mdArticles} />;
 }

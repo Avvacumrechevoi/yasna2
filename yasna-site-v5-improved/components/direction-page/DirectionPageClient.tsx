@@ -5,6 +5,7 @@ import Link from "next/link";
 import { directions } from "@/lib/data";
 import { useSignupModal } from "@/components/forms/SignupModalContext";
 import SignupModal from "@/components/forms/SignupModal";
+import type { ArticleMeta } from "@/lib/articles";
 
 import {
   CONTENT_TYPE_COLORS as TYPE_COLORS,
@@ -48,7 +49,7 @@ function SectionHeader({ title, subtitle, color }: { title: string; subtitle?: s
   );
 }
 
-export default function DirectionPageClient({ slug }: { slug: string }) {
+export default function DirectionPageClient({ slug, mdArticles = [] }: { slug: string; mdArticles?: ArticleMeta[] }) {
   const d = directions.find((dir) => dir.slug === slug);
   const [tab, setTab] = useState<"about" | "articles" | "resources">("about");
   const { openModal } = useSignupModal();
@@ -63,6 +64,11 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
   );
 
   const related = directions.filter((r) => d.relatedSlugs.includes(r.slug));
+
+  const articleItems = [
+    ...mdArticles.map((a) => ({ title: a.title, type: a.type, date: a.date, duration: a.duration, href: `/articles/${a.slug}`, internal: true })),
+    ...d.articles.map((a) => ({ title: a.title, type: a.type, date: a.date, duration: a.duration, href: a.url || "", internal: false })),
+  ];
 
   return (
     <div className="min-h-screen bg-[#FAF8F4] text-[#1F2937]">
@@ -123,7 +129,7 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
       <div role="tablist" aria-label="Разделы направления" className="max-w-[900px] mx-auto px-5 md:px-8 pt-5 flex gap-2 flex-wrap">
         {([
           { id: "about" as const, label: "О направлении", count: 0 },
-          { id: "articles" as const, label: "Материалы", count: d.articles.length },
+          { id: "articles" as const, label: "Материалы", count: articleItems.length },
           { id: "resources" as const, label: "Ресурсы", count: d.links.length },
         ]).map((t) => (
           <button key={t.id} onClick={() => setTab(t.id)} role="tab" aria-selected={tab === t.id}
@@ -253,9 +259,9 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
         {tab === "articles" && <section>
           <h2 className="text-[28px] font-bold font-serif text-[#141C28] mb-2">Материалы и публикации</h2>
           <p className="text-[14.5px] text-[#6B7280] mb-7">Статьи, видео и гайды направления</p>
-          {d.articles.length > 0 ? (
+          {articleItems.length > 0 ? (
             <div className="space-y-3">
-              {d.articles.map((art, i) => {
+              {articleItems.map((art, i) => {
                 const tc = TYPE_COLORS[art.type] || d.color;
                 const inner = (
                   <>
@@ -272,19 +278,13 @@ export default function DirectionPageClient({ slug }: { slug: string }) {
                       <h3 className="text-[15.5px] font-semibold text-[#1F2937] leading-snug">{art.title}</h3>
                       <p className="text-[12.5px] text-[#6B7280] mt-1">{art.date}</p>
                     </div>
-                    {art.url && <span className="text-[18px] self-center opacity-40" style={{ color: d.color }}>→</span>}
+                    {art.href && <span className="text-[18px] self-center opacity-40" style={{ color: d.color }}>→</span>}
                   </>
                 );
-                return art.url ? (
-                  <a key={i} href={art.url} target="_blank" rel="noopener noreferrer"
-                    className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-black/[0.04] no-underline cursor-pointer transition-all hover:shadow-md hover:-translate-y-px">
-                    {inner}
-                  </a>
-                ) : (
-                  <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-black/[0.04]">
-                    {inner}
-                  </div>
-                );
+                const cls = "flex items-start gap-4 p-5 rounded-2xl bg-white border border-black/[0.04]" + (art.href ? " no-underline cursor-pointer transition-all hover:shadow-md hover:-translate-y-px" : "");
+                if (art.internal && art.href) return <Link key={i} href={art.href} className={cls}>{inner}</Link>;
+                if (art.href) return <a key={i} href={art.href} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>;
+                return <div key={i} className={cls}>{inner}</div>;
               })}
             </div>
           ) : (

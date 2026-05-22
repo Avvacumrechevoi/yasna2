@@ -44,6 +44,21 @@ body {
   font-feature-settings: "kern" 1, "liga" 1, "lnum" 1;
 }
 
+/* Article (Markdown) body */
+.article-body { color: #374151; font-size: 16.5px; line-height: 1.8; }
+.article-body p { margin-top: 1.1em; }
+.article-body h2 { font-family: var(--font-cormorant), Georgia, serif; font-size: 26px; font-weight: 700; color: #141C28; margin-top: 1.8em; margin-bottom: 0.2em; letter-spacing: -0.01em; }
+.article-body h3 { font-size: 19px; font-weight: 700; color: #141C28; margin-top: 1.5em; }
+.article-body ul, .article-body ol { margin-top: 1em; padding-left: 1.4em; }
+.article-body li { margin-top: 0.4em; }
+.article-body ul li { list-style: disc; }
+.article-body ol li { list-style: decimal; }
+.article-body a { color: #8B6914; text-decoration: underline; }
+.article-body strong { color: #1F2937; font-weight: 700; }
+.article-body blockquote { border-left: 3px solid #C8A882; padding: 0.2em 0 0.2em 1.1em; margin: 1.3em 0; color: #4B5563; font-style: italic; font-family: var(--font-cormorant), Georgia, serif; font-size: 20px; }
+.article-body hr { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 2em 0; }
+.article-body img { width: 100%; border-radius: 16px; margin-top: 1.4em; }
+
 /* Animations */
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
